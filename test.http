@@ -3,7 +3,22 @@ Accept: application/json
 
 ###
 
-GET http://localhost:8000/api/note/?date_from=2022/03/13 10:30
+GET http://localhost:8000/api/note/?date_from=2022/03/13 19:51:00
 Accept: application/json
+
+###
+
+GET http://localhost:8000/api/note/?date_from=2022/03/13 19:51:30
+Accept: application/json
+
+###
+
+POST http://localhost:8000/api/note/
+Content-Type: application/json
+
+{
+    "title": "title003",
+    "content": "contetewtsentsentse003"
+}
 
 ###
