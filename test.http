@@ -8,7 +8,33 @@ Accept: application/json
 
 ###
 
+GET http://localhost:8000/api/note/?date_from=2022/03/13 19:51:00&title=3
+Accept: application/json
+
+###
+
 GET http://localhost:8000/api/note/?date_from=2022/03/13 19:51:30
+Accept: application/json
+
+###
+
+GET http://localhost:8000/api/note/?rank=7
+Accept: application/json
+
+###
+
+GET http://localhost:8000/api/note/?date_from=202203/13 19:51:30
+Accept: application/json
+
+###
+
+GET http://localhost:8000/api/note/?rank=asdf
+Accept: application/json
+
+###
+
+
+GET http://localhost:8000/api/note/?date_from=202203/13 19:51:30&rank=12345678901234567890as
 Accept: application/json
 
 ###
@@ -17,7 +43,7 @@ POST http://localhost:8000/api/note/
 Content-Type: application/json
 
 {
-    "title": "title003",
+    "title": "title3",
     "content": "contetewtsentsentse003"
 }
 

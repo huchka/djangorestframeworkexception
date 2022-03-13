@@ -8,6 +8,7 @@ class NoteAdmin(admin.ModelAdmin):
     list_display = (
         "title",
         "content",
+        "rank",
         "created_datetime",
         "modified_datetime",
     )
