@@ -1,0 +1,9 @@
+GET http://localhost:8000/api/note/
+Accept: application/json
+
+###
+
+GET http://localhost:8000/api/note/?date_from=2022/03/13 10:30
+Accept: application/json
+
+###
