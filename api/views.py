@@ -1,3 +1,5 @@
+import logging
+
 from django.shortcuts import render
 
 # Create your views here.
@@ -14,10 +16,12 @@ from api.filter.note_filter import NoteFilters
 from api.models import Note
 from api.serializer.note_serializer import NoteSerializer
 
+logger = logging.getLogger(__file__)
 
 class HelloWorld(APIView):
 
     def get(self, request: Request):
+        logger.info("Hello world view")
         return Response({"message": "Hello World!!!"}, status.HTTP_200_OK)
 
 

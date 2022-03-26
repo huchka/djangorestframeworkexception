@@ -1,11 +1,38 @@
 version: "3.4"
+
+x-common-env-variables: &common-env
+    MYSQL_ROOT_USER: root
+    MYSQL_ROOT_PASSWORD: root
+    MYSQL_DATABASE: django
+
 services:
-  webapp_django:
-    build:
-      context: ./
-      dockerfile: ./Dockerfile
-    ports:
-      - "8000:8000"
-    entrypoint: ["bash", "-c", "sh /code/entrypoint.sh"]
-    volumes:
-      - ./:/code/
+    webapp_django:
+        hostname: webapp_django
+        build:
+            context: ./
+            dockerfile: ./Dockerfile
+        ports:
+            - "8000:8000"
+        command: ["bash", "-c", "sh /code/entrypoint.sh"]
+        volumes:
+            - .:/code
+        links:
+            - mysqldatabase
+        depends_on:
+            mysqldatabase:
+                condition: service_healthy
+        environment:
+            <<: *common-env
+
+    mysqldatabase:
+        hostname: mysqldatabase
+        image: mysql:5.7
+        ports:
+            - 13306:3306
+        environment:
+            <<: *common-env
+        volumes:
+            - ./db/:/var/lib/mysql/
+        healthcheck:
+            test: mysqladmin ping -h 127.0.0.1 -u$$MYSQL_ROOT_USER -p$$MYSQL_ROOT_PASSWORD
+
