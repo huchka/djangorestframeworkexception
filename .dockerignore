@@ -1,0 +1,9 @@
+.git/
+.idea/
+.VS_Code/
+venv/
+.gitignore
+.dockerignore
+test.http
+docker-compose.yml
+Dockerfile
